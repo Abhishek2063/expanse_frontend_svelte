@@ -1,0 +1,52 @@
+<script>
+    import { Route, Router,navigate } from "svelte-routing";
+    import Home from "./views/home/home.svelte"
+    import Login from "./views/login/login.svelte"
+    import Register from "./views/register/register.svelte"
+    import Dashboard from "./views/dashboard/dashboard.svelte"
+    import { private_route, public_routes } from "./routes/app_routes";
+    import { getToken } from "./utils/storage/token";
+    import PublicLayout from "./layouts/PublicLayout.svelte";
+    import PrivateLayout from "./layouts/PrivateLayout.svelte";
+ // Check if the access token exists in the session storage
+ const accessToken = getToken();
+
+// Function to determine if the user is authenticated
+function isAuthenticated() {
+        return !!accessToken;
+    }
+
+     // Function to check if the current route is a private route
+     function isPrivateRoute(pathname) {
+        return Object.values(private_route).includes(pathname);
+    }
+
+     // Function to check if the current route is a private route
+     function isPublicRoute(pathname) {
+        return Object.values(public_routes).includes(pathname);
+    }
+
+     // Redirect to the login page if trying to access a private route without authentication
+  if (!isAuthenticated() && isPrivateRoute(window.location.pathname)) {
+    navigate( public_routes.login);
+  }
+
+  if (isAuthenticated() && isPublicRoute(window.location.pathname)) {
+    navigate( private_route.dashboard);
+  }
+
+</script>
+<Router>
+  {#if isAuthenticated()}
+      <PrivateLayout>
+          <Route path={private_route.dashboard} component={Dashboard}/>
+      </PrivateLayout>
+  {:else}
+      <PublicLayout>
+          <Route path={public_routes.login} component={Login}/>
+          <Route path={public_routes.register} component={Register}/>
+          <Route path={public_routes.home} component={Home}/>
+      </PublicLayout>
+  {/if}
+</Router>
+
