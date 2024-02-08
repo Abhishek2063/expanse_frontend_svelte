@@ -2,10 +2,14 @@
 	export let text;
 	export let class_values;
 	export let navigate_path;
+	import { navigate } from 'svelte-routing'
+ const handleClick = () => {
+	navigate(navigate_path)
+ }
 </script>
 
-<button class={class_values}>
-	<a href={navigate_path}>{text}</a>
+<button class={class_values} on:click={handleClick}>
+	{text}
 </button>
 
 <style>

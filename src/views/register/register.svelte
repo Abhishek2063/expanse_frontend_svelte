@@ -8,6 +8,7 @@
     import Button from '../../components/Button.svelte';
     import { public_routes } from '../../routes/app_routes';
 	import { navigate } from 'svelte-routing'
+    import NavigateButton from '../../components/NavigateButton.svelte';
 
 	let register_form_data = {
 		first_name: '',
@@ -234,11 +235,13 @@
 				type="submit"
 			/>
 		</div>
-		<div class="mt-3 flex items-center justify-between">
-			<a class="inline-block align-baseline text-sm font-bold" href={public_routes.login}
-				>Already have an account?
-				<span class="text-blue-500 hover:text-blue-800"> Sign in </span>
-			</a>
+		<div class="mt-3 flex items-center justify-between inline-block align-baseline text-sm font-bold">
+			Already have an account?
+				<NavigateButton
+				class_values="text-blue-500 hover:text-blue-800"
+				text="Sign In"
+				navigate_path={public_routes.login}
+			/>
 		</div>
 	</form>
 </div>
