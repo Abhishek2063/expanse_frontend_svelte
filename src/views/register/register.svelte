@@ -58,8 +58,7 @@
 					register_form_data[key],
 					type,
 					maxLength,
-					minLength,
-					register_form_data
+					minLength
 				);
 
 				// Update error message in the register_form_data_error object
@@ -123,7 +122,7 @@
 		}
 	};
 
-	const checkValidation = (field, value, type, maxLength, minLength,register_form_data) => {
+	const checkValidation = (field, value, type, maxLength, minLength) => {
 		return fieldValidator(field, value, type, maxLength, minLength, register_form_data.password);
 	};
 

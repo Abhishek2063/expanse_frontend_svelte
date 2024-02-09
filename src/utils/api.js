@@ -1,7 +1,8 @@
 // api.js
 
 import axios from 'axios';
-const baseURL = import.meta.env.API_URL; 
+import { getToken } from './storage/token';
+const baseURL = import.meta.env.VITE_API_URL; 
 // Create an Axios instance with default configuration
 const api = axios.create({
   baseURL,
@@ -13,7 +14,7 @@ const api = axios.create({
 // Add interceptor to add authorization token from session storage to requests
 api.interceptors.request.use(
   (config) => {
-    const accessToken = sessionStorage.getItem('ACCESS_TOKEN');
+    const accessToken = getToken();
     if (accessToken) {
       config.headers.Authorization = `${accessToken}`;
     }
