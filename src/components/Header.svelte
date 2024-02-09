@@ -36,6 +36,7 @@
           message.success(response.data.message);
           clearUserDetails();
           removeLocalData();
+          window.location.href = public_routes.login
           navigate(public_routes.login);
           isLoader = false;
         } else {

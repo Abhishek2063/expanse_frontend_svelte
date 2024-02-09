@@ -86,6 +86,7 @@
 							password: ''
 						};
 						isLoader = false;
+						window.location.href = private_route.dashboard
 						navigate(private_route.dashboard)
 						// goto(DASHBOARD);
 					} else {
