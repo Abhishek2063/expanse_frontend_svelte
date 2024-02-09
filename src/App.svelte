@@ -8,6 +8,9 @@
   import { getToken } from "./utils/storage/token";
   import PublicLayout from "./layouts/PublicLayout.svelte";
   import PrivateLayout from "./layouts/PrivateLayout.svelte";
+  import Income from "./views/income/income.svelte";
+  import Expanse from "./views/expanse/expanse.svelte";
+  import Profile from "./views/profile/profile.svelte";
   // Check if the access token exists in the session storage
   const accessToken = getToken();
 
@@ -51,6 +54,9 @@
   {#if isAuthenticated()}
     <PrivateLayout>
       <Route path={private_route.dashboard} component={Dashboard} />
+      <Route path={private_route.income} component={Income} />
+      <Route path={private_route.expense} component={Expanse} />
+      <Route path={private_route.profile} component={Profile} />
     </PrivateLayout>
   {:else}
     <PublicLayout>
