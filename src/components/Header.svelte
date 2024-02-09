@@ -8,6 +8,8 @@
   import { LOGOUT_API } from "../routes/api_routes";
   import { message } from "antd";
   import { removeLocalData } from "../utils/storage/token";
+  import Loader from "../utils/loader.svelte";
+  export let isLoader;
   // Define the list of pages with their respective paths
   const pages = [
     { name: "Dashboard", path: private_route.dashboard },
@@ -15,7 +17,6 @@
     { name: "Expense", path: private_route.expense },
     { name: "Profile", path: private_route.profile },
   ];
-  let isLoader = false;
 
   // Get the current page's path
   let currentPage = window.location.pathname;
@@ -48,6 +49,10 @@
       });
   };
 </script>
+
+{#if isLoader}
+  <Loader />
+{/if}
 
 <header
   class="fixed top-0 w-full bg-gray-800 text-white py-4 flex justify-between items-center"
