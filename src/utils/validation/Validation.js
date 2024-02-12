@@ -140,7 +140,13 @@ export const validateInputs = (type, inputText) => {
         return "empty";
       }
   
-      
+      case "decimalNumber": {
+        if (inputText) {
+          const decimal = /^\d+(\.\d{1,2})?$/;
+          return decimal.test(inputText);
+        }
+        return "empty";
+      }
   
       default:
     }

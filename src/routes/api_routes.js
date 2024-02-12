@@ -1,3 +1,6 @@
 export const REGISTER_API= "users/create"
 export const LOGIN_API= "users/login"
 export const LOGOUT_API= "users/logout"
+export const GET_CATEGORY_LIST = "categories/list/"
+export const ADD_CATEGORY_DATA = "categories/create"
+export const ADD_INCOME_DATA = "incomes/create"
