@@ -51,18 +51,11 @@
 </script>
 
 <Router>
-  {#if isAuthenticated()}
-    <PrivateLayout>
-      <Route path={private_route.dashboard} component={Dashboard} />
-      <Route path={private_route.income} component={Income} />
-      <Route path={private_route.expense} component={Expanse} />
-      <Route path={private_route.profile} component={Profile} />
-    </PrivateLayout>
-  {:else}
-    <PublicLayout>
-      <Route path={public_routes.login} component={Login} />
-      <Route path={public_routes.register} component={Register} />
-      <Route path={public_routes.home} component={Home} />
-    </PublicLayout>
-  {/if}
+  <Route path={private_route.dashboard} component={Dashboard} />
+  <Route path={private_route.income} component={Income} />
+  <Route path={private_route.expense} component={Expanse} />
+  <Route path={private_route.profile} component={Profile} />
+  <Route path={public_routes.login} component={Login} />
+  <Route path={public_routes.register} component={Register} />
+  <Route path={public_routes.home} component={Home} />
 </Router>
