@@ -2,7 +2,6 @@
   import PrivateLayout from "../../layouts/PrivateLayout.svelte";
 
   // Your script goes here
-  console.log("hfkjasdhfkjashdfkjashdfkashdfkjasd");
 </script>
 
 <PrivateLayout>
